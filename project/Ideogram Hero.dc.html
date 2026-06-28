@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap" rel="stylesheet">
+<script>
+  /* load framer-motion only after React/ReactDOM globals exist (its build reads global React at eval time) */
+  (function loadFramerMotion(){
+    if (window.Motion) return;
+    if (!window.React || !window.ReactDOM) { setTimeout(loadFramerMotion, 20); return; }
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/framer-motion@11.18.2/dist/framer-motion.js?cors=3';
+    s.crossOrigin = 'anonymous';
+    document.head.appendChild(s);
+  })();
+</script>
+<style>
+  @font-face{
+    font-family:'Exposure Trial VAR';
+    src:url('fonts/ExposureTrialVAR.woff2') format('woff2-variations'),
+        url('fonts/ExposureTrialVAR.woff2') format('woff2'),
+        url('fonts/ExposureTrialVAR.ttf') format('truetype-variations'),
+        url('fonts/ExposureTrialVAR.ttf') format('truetype'),
+        url('fonts/ExposureTrialVAR.otf') format('opentype');
+    font-weight:100 900;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Saans VF-Trial';
+    src:url('fonts/SaansVF-Trial.woff2') format('woff2-variations'),
+        url('fonts/SaansVF-Trial.woff2') format('woff2'),
+        url('fonts/SaansVF-Trial.ttf') format('truetype-variations'),
+        url('fonts/SaansVF-Trial.ttf') format('truetype');
+    font-weight:100 900;
+    font-display:swap;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#efe7de;}
+</style>
+</helmet>
+
+<div ref="{{ introRef }}" style="position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(40px,9vh,110px);background:linear-gradient(180deg,#f6eee5 0%,#f7eee4 46%,#ffe7d3 57%,#f3d8f3 66%,#e2c3ff 82%,#bd9eff 100%);overflow:hidden;">
+  <div ref="{{ introARef }}" style="font-family:'Exposure Trial VAR','Newsreader',Georgia,serif;font-variation-settings:'EXPO' 37;font-weight:500;font-size:clamp(52px,11vw,150px);line-height:1;letter-spacing:-0.005em;color:#1c1b1f;margin:0;opacity:0;transform:translateY(36px);will-change:transform,opacity;">Your art.</div>
+  <img ref="{{ introLogoRef }}" src="assets/glyph.svg" alt="Ideogram" style="width:clamp(60px,7vw,104px);height:auto;display:block;opacity:0;transform:translateY(36px);will-change:transform,opacity;">
+  <div ref="{{ introBRef }}" style="font-family:'Exposure Trial VAR','Newsreader',Georgia,serif;font-variation-settings:'EXPO' 37;font-weight:500;font-size:clamp(52px,11vw,150px);line-height:1;letter-spacing:-0.005em;color:#1c1b1f;margin:0;opacity:0;transform:translateY(36px);will-change:transform,opacity;">Your style.</div>
+</div>
+<div ref="{{ heroRef }}" style="position:relative;min-height:100vh;width:100%;background:#efe7de;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;padding:44px 56px;display:flex;flex-direction:column;">
+
+  <img onClick="{{ onLogoClick }}" src="./lockup-mqu6j9qy.svg" alt="Ideogram" style="height:46px;width:auto;display:block;position:relative;z-index:3;align-self:flex-start;cursor:pointer;" data-om-label="Logo">
+
+  <div ref="{{ stageRef }}" style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;width:100%;">
+
+    <div ref="{{ scalerRef }}" style="width:1740px;display:flex;align-items:center;justify-content:space-between;gap:64px;transform-origin:center center;will-change:transform;">
+
+    <div style="flex: 1 1 560px; max-width: 820px; position: relative; z-index: 2">
+
+      <div ref="{{ stripRef }}" style="display:flex;align-items:center;width:max-content;max-width:none;position:static;">
+        <div onMouseEnter="{{ onTileEnter }}" onMouseLeave="{{ onTileLeave }}" style="position:relative;z-index:5;margin-left:0;flex:0 0 auto;width:220px;height:220px;opacity:0;transition:transform .25s ease;" style-hover="transform:translateY(-20px) scale(1.04);">
+          <div data-cap="1" style="position:absolute;bottom:100%;left:0;margin-bottom:12px;white-space:nowrap;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:0.01em;color:#6b6570;opacity:0;transition:opacity .22s ease;pointer-events:none;">Training 01</div>
+          <img src="./training-1-mqy5jjgb.png" alt="" style="width:220px;height:220px;border-radius:13px;object-fit:cover;display:block;">
+        </div>
+        <div onMouseEnter="{{ onTileEnter }}" onMouseLeave="{{ onTileLeave }}" style="position:relative;z-index:4;margin-left:-58px;flex:0 0 auto;width:220px;height:220px;opacity:0;transition:transform .25s ease;" style-hover="transform:translateY(-20px) scale(1.04);">
+          <div data-cap="1" style="position:absolute;bottom:100%;left:0;margin-bottom:12px;white-space:nowrap;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:0.01em;color:#6b6570;opacity:0;transition:opacity .22s ease;pointer-events:none;">Training 05</div>
+          <img src="./training-2-mqy5jvs2.png" alt="" style="width:220px;height:220px;border-radius:13px;object-fit:cover;display:block;">
+        </div>
+        <div onMouseEnter="{{ onTileEnter }}" onMouseLeave="{{ onTileLeave }}" style="position:relative;z-index:3;margin-left:-58px;flex:0 0 auto;width:220px;height:220px;opacity:0;transition:transform .25s ease;" style-hover="transform:translateY(-20px) scale(1.04);">
+          <div data-cap="1" style="position:absolute;bottom:100%;left:0;margin-bottom:12px;white-space:nowrap;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:0.01em;color:#6b6570;opacity:0;transition:opacity .22s ease;pointer-events:none;">Training 11</div>
+          <img src="./training-3-mqy5k7qo.png" alt="" style="width:220px;height:220px;border-radius:13px;object-fit:cover;display:block;">
+        </div>
+        <div onMouseEnter="{{ onTileEnter }}" onMouseLeave="{{ onTileLeave }}" style="position:relative;z-index:2;margin-left:-58px;flex:0 0 auto;width:220px;height:220px;opacity:0;transition:transform .25s ease;" style-hover="transform:translateY(-20px) scale(1.04);">
+          <div data-cap="1" style="position:absolute;bottom:100%;left:0;margin-bottom:12px;white-space:nowrap;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:0.01em;color:#6b6570;opacity:0;transition:opacity .22s ease;pointer-events:none;">Training 17</div>
+          <img src="./training-4-mqy5kfoe.png" alt="" style="width:220px;height:220px;border-radius:13px;object-fit:cover;display:block;">
+        </div>
+        <div onMouseEnter="{{ onTileEnter }}" onMouseLeave="{{ onTileLeave }}" style="position:relative;z-index:1;margin-left:-58px;flex:0 0 auto;width:220px;height:220px;opacity:0;transition:transform .25s ease;" style-hover="transform:translateY(-20px) scale(1.04);">
+          <div data-cap="1" style="position:absolute;bottom:100%;left:0;margin-bottom:12px;white-space:nowrap;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:0.01em;color:#6b6570;opacity:0;transition:opacity .22s ease;pointer-events:none;">Training 23</div>
+          <img src="./training-5-mqy5kqc2.png" alt="" style="width:220px;height:220px;border-radius:13px;object-fit:cover;display:block;">
+        </div>
+      </div>
+
+      
+
+      <h1 ref="{{ h1Ref }}" style="opacity:0;font-family: 'Saans VF-Trial', 'Hanken Grotesk', sans-serif; font-variation-settings: 'MONO' 30, 'wght' 0; font-size: clamp(30px,3vw,42px); line-height: 1.18; font-weight: 500; letter-spacing: -0.01em; color: #232425eb; max-width: 860px; margin: 46px 0 0; text-wrap: pretty; margin-top: 48px">Train your model on your style. Every new generation from your custom model will follow your art direction, typography, and visual identity.</h1><button ref="{{ buttonRef }}" onClick="{{ onStart }}" style="opacity:0;margin-top: 40px; border: none; cursor: pointer; color: #2b2733; font-family: 'Saans VF-Trial', 'Hanken Grotesk', sans-serif; font-variation-settings: 'MONO' 30, 'wght' 500; font-size: 18px; font-weight: 500; padding: 16px 34px; border-radius: 999px; transition: background .2s ease; background-color: #bd9fff" style-hover="background:#d3c2ff;">Start training</button>
+
+    </div>
+
+    <div ref="{{ largeWrapRef }}" onMouseEnter="{{ onLargeEnter }}" onMouseLeave="{{ onLargeLeave }}" onMouseMove="{{ onLargeMove }}" style="opacity:0;flex:0 0 auto;position:relative;z-index:2;">
+      <img ref="{{ largeRef }}" src="./generation-mqy5l2b0.png" alt="" style="width: min(478px,38vw); min-width: 320px; aspect-ratio: 478 / 656; height: auto; object-fit: cover; border-radius: 20px; display: block">
+      <canvas ref="{{ ditherRef }}" width="2" height="2" style="position:absolute;inset:0;width:100%;height:100%;border-radius:20px;pointer-events:none;"></canvas>
+      <div ref="{{ capRef }}" style="position:absolute;top:100%;left:0;right:0;margin-top:14px;text-align:left;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:0.01em;color:#6b6570;opacity:0;transition:opacity .22s ease;pointer-events:none;will-change:transform;">Generated by Marcelo's custom model</div>
+    </div>
+
+    </div>
+
+  </div>
+
+  <svg ref="{{ svgRef }}" width="100%" height="100%" viewBox="0 0 {{ vw }} {{ vh }}" preserveAspectRatio="none" style="position:absolute;inset:0;z-index:1;pointer-events:none;overflow:visible;opacity:0;">
+    <path ref="{{ pathRef }}" d="{{ path }}" fill="none" stroke="#2b2733" stroke-width="1.6"></path>
+  </svg>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  heroRef = React.createRef();
+  introRef = React.createRef();
+  introARef = React.createRef();
+  introLogoRef = React.createRef();
+  introBRef = React.createRef();
+  capRef = React.createRef();
+  stageRef = React.createRef();
+  scalerRef = React.createRef();
+  stripRef = React.createRef();
+  largeRef = React.createRef();
+  pathRef = React.createRef();
+  dotRef = React.createRef();
+  svgRef = React.createRef();
+  h1Ref = React.createRef();
+  buttonRef = React.createRef();
+  largeWrapRef = React.createRef();
+  ditherRef = React.createRef();
+  state = { vw: 1920, vh: 900, path: "", p0x: 0, p0y: 0, p1x: 0, p1y: 0, show: false };
+  geo = null;          // base connector geometry (image at rest)
+  scale = 1;           // current zoom-out factor
+  AMP = 10;            // float amplitude in px
+  SPEED = 0.00068;     // ~9s period
+
+  componentDidMount() {
+    this._measure = this.measure.bind(this);
+    this.measure();
+    window.addEventListener("resize", this._measure);
+    this._t1 = setTimeout(this._measure, 120);
+    this._t2 = setTimeout(this._measure, 500);
+    this._loop = this.animate.bind(this);
+    this._raf = requestAnimationFrame(this._loop);
+    this.initDither();
+    // play the intro with framer-motion (shares window.React 18); poll until it loads
+    this._introT0 = Date.now();
+    this._fmCheck = () => {
+      const FM = window.Motion || window.FramerMotion;
+      if (FM && typeof FM.animate === "function") { this.playIntro(FM.animate); }
+      else if (Date.now() - this._introT0 > 2500) { this.revealNow(); }       // fallback: just show the page
+      else this._fmTimer = setTimeout(this._fmCheck, 30);
+    };
+    this._fmCheck();
+  }
+
+  playIntro(animate) {
+    if (this._introStarted) return;
+    this._introStarted = true;
+    const easeIn = [0.22, 1, 0.36, 1];
+    const items = [
+      [this.introARef.current, 0.05],
+      [this.introLogoRef.current, 0.18],
+      [this.introBRef.current, 0.31]
+    ];
+    // copy + logo + gradient slide up slightly and fade in
+    for (const [el, delay] of items) {
+      if (el) animate(el, { opacity: [0, 1], y: [36, 0] }, { duration: 0.85, delay, ease: easeIn });
+    }
+    // hold, then slide the whole intro up and transition into the page
+    const HOLD = 1000, SETTLE = 1160;
+    this._introTimer = setTimeout(() => {
+      const overlay = this.introRef.current;
+      if (!overlay) return;
+      const easeOut = [0.4, 0, 0.2, 1];
+      // each element fades out quickly while it slides up 20px more slowly, so it's gone before it reaches the top
+      const exitItems = [this.introARef.current, this.introLogoRef.current, this.introBRef.current];
+      const step = 0.06; // ~a few frames between each
+      exitItems.forEach((el, i) => {
+        if (!el) return;
+        const d = i * step;
+        animate(el, { opacity: [1, 0] }, { duration: 0.32, delay: d, ease: easeOut });
+        animate(el, { y: [0, -20] }, { duration: 0.6, delay: d, ease: easeOut });
+      });
+      // fade the gradient background out last, over a longer duration
+      const bgDelay = exitItems.length * step + 0.32;
+      const exit = animate(overlay, { opacity: [1, 0] }, { duration: 1.1, delay: bgDelay, ease: easeOut });
+      // start bringing the 5 tiles in just as the gradient begins to fade
+      this._t_bringin = setTimeout(() => this.playReveal(animate), Math.round(bgDelay * 1000));
+      const done = () => { if (this.introRef.current) this.introRef.current.style.display = "none"; this.playReveal(animate); };
+      if (exit && exit.finished && exit.finished.then) exit.finished.then(done).catch(done);
+      else if (exit && exit.then) exit.then(done).catch(done);
+      else this._exitTimer = setTimeout(done, 1200);
+    }, SETTLE + HOLD);
+  }
+
+  revealNow() {
+    for (const r of [this.introARef, this.introLogoRef, this.introBRef]) {
+      if (r.current) { r.current.style.opacity = "1"; r.current.style.transform = "none"; }
+    }
+    this._introTimer = setTimeout(() => {
+      const overlay = this.introRef.current;
+      const items = [this.introARef.current, this.introLogoRef.current, this.introBRef.current];
+      items.forEach((el, i) => {
+        if (el) { el.style.transition = `opacity .32s ease ${i * 60}ms, transform .6s ease ${i * 60}ms`; el.style.opacity = "0"; el.style.transform = "translateY(-20px)"; }
+      });
+      if (overlay) { overlay.style.transition = "opacity 1.1s ease .5s"; overlay.style.opacity = "0"; this._exitTimer = setTimeout(() => { if (overlay) overlay.style.display = "none"; this.showAllStatic(); }, 1700); }
+    }, 1700);
+  }
+
+  _tiles() {
+    const s = this.stripRef.current;
+    return s ? Array.from(s.children).filter(c => c.tagName === "DIV") : [];
+  }
+
+  // after the intro: tiles rise in centered, slide left, then the rest staggers in
+  playReveal(animate) {
+    if (this._revealed) return;
+    this._revealed = true;
+    this.measure();
+    const strip = this.stripRef.current;
+    const tiles = this._tiles();
+    if (!strip || !tiles.length) { this.showAllStatic(); return; }
+    const scale = this.scale || 1;
+    const r = strip.getBoundingClientRect();
+    const SPREAD_CENTER = 570; // local px: half the spread-out group width (5x 220 + 10px gaps)
+    const SPREAD_STEP = 68;    // local px each tile shifts right to undo overlap + add a gap
+    const cx = (window.innerWidth / 2 - r.left) / scale - SPREAD_CENTER;
+    const cy = 0; // enter at the FINAL vertical position so the slide-left transition has no upward movement
+    const EASE = "cubic-bezier(.22,1,.36,1)";
+    // Phase 1 — rise 20px + fade in, staggered, landing centered & spread out
+    this._tileAnims = [];
+    tiles.forEach((el, i) => {
+      const x = cx + i * SPREAD_STEP;
+      const a = el.animate(
+        [{ opacity: 0, transform: `translate(${x}px, ${cy + 20}px)` },
+         { opacity: 1, transform: `translate(${x}px, ${cy}px)` }],
+        { duration: 600, delay: i * 90, easing: EASE, fill: "both" }
+      );
+      this._tileAnims.push(a);
+    });
+    const enterEnd = 600 + 4 * 90; // ~960ms
+    // Phase 2 — slide the whole group left into the natural overlapped position
+    this._t_slide = setTimeout(() => {
+      tiles.forEach((el, i) => {
+        const x = cx + i * SPREAD_STEP;
+        const a = el.animate(
+          [{ transform: `translate(${x}px, ${cy}px)` },
+           { transform: `translate(0px, 0px)` }],
+          { duration: 780, delay: i * 35, easing: "cubic-bezier(.65,0,.35,1)", fill: "both" }
+        );
+        this._tileAnims.push(a);
+      });
+      // Phase 3 — reveal the rest once they've settled
+      this._t_reveal = setTimeout(() => this.revealRest(), 980);
+    }, enterEnd - 50); // shortened hold by 0.5s so the transition starts sooner
+    // safety net: if any animation stalls, force the final state visible
+    this._t_safety = setTimeout(() => this.showAllStatic(), enterEnd - 50 + 980 + 2600);
+  }
+
+  revealRest() {
+    const EASE = "cubic-bezier(.22,1,.36,1)";
+    // release the WAAPI hold so the natural layout + hover lift take over
+    (this._tileAnims || []).forEach(a => { try { a.cancel(); } catch (e) {} });
+    this._tiles().forEach(el => { el.style.transform = ""; el.style.opacity = "1"; });
+    const svg = this.svgRef.current, path = this.pathRef.current;
+    // 1 — draw the svg connector line
+    if (svg) {
+      svg.style.opacity = "1";
+      if (path) {
+        let len = 320; try { len = path.getTotalLength() || 320; } catch (e) {}
+        path.style.strokeDasharray = String(len);
+        path.style.strokeDashoffset = String(len);
+        requestAnimationFrame(() => { path.style.transition = "stroke-dashoffset .85s " + EASE; path.style.strokeDashoffset = "0"; });
+        this._t_dash = setTimeout(() => { if (path) { path.style.transition = ""; path.style.strokeDasharray = "none"; path.style.strokeDashoffset = "0"; } }, 1050);
+      }
+    }
+    // staggered fade (+ optional slide up) using CSS transitions so the final state lives in inline styles
+    const fadeUp = (el, delay, fromY) => {
+      if (!el) return;
+      if (fromY) el.style.transform = "translateY(16px)";
+      void el.offsetWidth; // commit start state
+      el.style.transition = `opacity .6s ${EASE} ${delay}ms, transform .6s ${EASE} ${delay}ms`;
+      requestAnimationFrame(() => { el.style.opacity = "1"; if (fromY) el.style.transform = "translateY(0px)"; });
+    };
+    fadeUp(this.largeWrapRef.current, 200, false); // 2 — large image
+    fadeUp(this.h1Ref.current, 460, true);         // 3 — text copy
+    fadeUp(this.buttonRef.current, 720, true);     // 4 — button
+  }
+
+  // force the final visible state (safety net + no-framer-motion fallback)
+  showAllStatic() {
+    this._tiles().forEach(el => { el.getAnimations().forEach(a => { try { a.cancel(); } catch (e) {} }); el.style.transform = ""; el.style.opacity = "1"; });
+    const path = this.pathRef.current;
+    if (path) { path.getAnimations().forEach(a => { try { a.cancel(); } catch (e) {} }); path.style.transition = ""; path.style.strokeDasharray = "none"; path.style.strokeDashoffset = "0"; }
+    if (this.svgRef.current) { this.svgRef.current.style.opacity = "1"; }
+    [this.largeWrapRef.current, this.h1Ref.current, this.buttonRef.current].forEach(el => {
+      if (el) { el.getAnimations().forEach(a => { try { a.cancel(); } catch (e) {} }); el.style.opacity = "1"; el.style.transform = "none"; }
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._measure);
+    clearTimeout(this._t1); clearTimeout(this._t2);
+    clearTimeout(this._fmTimer); clearTimeout(this._introTimer); clearTimeout(this._exitTimer); clearTimeout(this._t_bringin);
+    clearTimeout(this._t_slide); clearTimeout(this._t_reveal); clearTimeout(this._t_dash); clearTimeout(this._t_dots);
+    clearTimeout(this._t_safety);
+    cancelAnimationFrame(this._raf);
+  }
+
+  buildPath(g, dy) {
+    const p1y = g.p1y + dy;
+    const dx = g.p1x - g.p0x;
+    // left half stays flat & fixed (horizontal tangent at the strip); the bend
+    // and vertical travel are concentrated near the right image so only it appears to move
+    const c1x = g.p0x + dx * 0.58, c1y = g.p0y;
+    const c2x = g.p1x - dx * 0.16, c2y = p1y;
+    return { d: `M ${g.p0x} ${g.p0y} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${g.p1x} ${p1y}`, p1y };
+  }
+
+  animate(now) {
+    this._raf = requestAnimationFrame(this._loop);
+    const large = this.largeRef.current;
+    if (!large) return;
+    const dy = this.AMP * Math.sin(now * this.SPEED);
+    // float the large image (local space)
+    large.style.transform = `translateY(${dy.toFixed(2)}px)`;
+    // keep the caption attached to the floating image
+    if (this.capRef.current) this.capRef.current.style.transform = `translateY(${dy.toFixed(2)}px)`;
+    // float the dither overlay together with the image, then render it
+    if (this.ditherRef.current) this.ditherRef.current.style.transform = `translateY(${dy.toFixed(2)}px)`;
+    this.drawDither(now);
+    // the image's on-screen travel is scaled, so follow with dy * scale
+    if (this.geo && this.pathRef.current) {
+      const { d } = this.buildPath(this.geo, dy * this.scale);
+      this.pathRef.current.setAttribute("d", d);
+    }
+  }
+
+  // ---- live-generation dither shader on the large image ----
+  _glProgram(gl, vsSrc, fsSrc) {
+    const sh = (type, src) => {
+      const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.warn("dither shader:", gl.getShaderInfoLog(s)); return null; }
+      return s;
+    };
+    const v = sh(gl.VERTEX_SHADER, vsSrc), f = sh(gl.FRAGMENT_SHADER, fsSrc);
+    if (!v || !f) return null;
+    const p = gl.createProgram(); gl.attachShader(p, v); gl.attachShader(p, f); gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) { console.warn("dither link:", gl.getProgramInfoLog(p)); return null; }
+    return p;
+  }
+
+  initDither() {
+    const canvas = this.ditherRef.current;
+    if (!canvas) return;
+    let gl = null;
+    try { gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false, antialias: true }); } catch (e) {}
+    if (!gl) return;
+    const vs = "attribute vec2 aPos; varying vec2 vUv; void main(){ vUv = aPos*0.5+0.5; gl_Position = vec4(aPos,0.0,1.0); }";
+    const fs = [
+      "precision highp float;",
+      "uniform sampler2D uTex; uniform vec2 uRes; uniform vec2 uMouse;",
+      "uniform float uRadius; uniform float uTime; uniform float uStrength; uniform float uCell; uniform float uAmbient;",
+      "varying vec2 vUv;",
+      "float luma(vec3 c){ return dot(c, vec3(0.299,0.587,0.114)); }",
+      "float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }",
+      "float vnoise(vec2 p){ vec2 i=floor(p), f=fract(p); float a=hash(i), b=hash(i+vec2(1.0,0.0)), c=hash(i+vec2(0.0,1.0)), d=hash(i+vec2(1.0,1.0)); vec2 u=f*f*(3.0-2.0*f); return mix(mix(a,b,u.x), mix(c,d,u.x), u.y); }",
+      "float fbm(vec2 p){ float s=0.0; float a=0.5; for(int i=0;i<4;i++){ s+=a*vnoise(p); p*=2.0; a*=0.5; } return s; }",
+      "void main(){",
+      "  vec2 frag = vUv * uRes;",
+      "  vec2 nuv = frag / uRes.y;",
+      "  vec2 flow = vec2(fbm(nuv*1.6 + uTime*0.05), fbm(nuv*1.6 + 7.3 - uTime*0.06));",
+      "  vec2 qv = nuv + 0.32*flow;",
+      "  float amb = fbm(qv*3.6 + vec2(uTime*0.14, uTime*0.09));",
+      "  float amb2 = fbm(qv*2.0 + vec2(-uTime*0.11, uTime*0.15) + 11.0);",
+      "  float an = max(amb, amb2*0.92);",
+      "  float edge = smoothstep(0.12, 0.52, length(vUv - 0.5));",
+      "  float ambient = smoothstep(0.30, 0.66, an) * uAmbient * mix(0.30, 1.0, edge);",
+      "  float dist = distance(frag, uMouse) / max(uRadius, 1.0);",
+      "  float blob = 1.0 - smoothstep(0.0, 1.0, dist);",
+      "  float hov = blob * (0.78 + 0.40*fbm(nuv*5.0 + vec2(uTime*0.15, -uTime*0.10)));",
+      "  hov = smoothstep(0.12, 0.90, hov) * uStrength;",
+      "  float alpha = clamp(max(ambient, hov), 0.0, 1.0);",
+      "  if (alpha <= 0.003) discard;",
+      "  vec3 src = texture2D(uTex, vUv).rgb;",
+      "  float l = luma(src);",
+      "  float flick = 0.04 * sin(uTime*6.0 + frag.x*0.10 + frag.y*0.08);",
+      "  l = clamp(l + flick, 0.0, 1.0);",
+      "  vec2 gp = frag / uCell;",
+      "  vec2 cellPos = fract(gp) - 0.5;",
+      "  float radius = sqrt(1.0 - l) * 0.7;",
+      "  float d = length(cellPos);",
+      "  float aa = 0.09;",
+      "  float dotv = 1.0 - smoothstep(radius-aa, radius+aa, d);",
+      "  float grain = hash(frag + floor(uTime*24.0));",
+      "  vec3 grainCol = clamp(src * (0.60 + 0.85*grain), 0.0, 1.0);",
+      "  vec3 ditherCol = clamp(src * mix(1.18, 0.64, dotv), 0.0, 1.0);",
+      "  float hovW = clamp(hov / max(alpha, 0.001), 0.0, 1.0);",
+      "  vec3 col = mix(grainCol, ditherCol, hovW);",
+      "  gl_FragColor = vec4(col, alpha * 0.74);",
+      "}"
+    ].join("\n");
+    const prog = this._glProgram(gl, vs, fs);
+    if (!prog) return;
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+    gl.useProgram(prog);
+    const aPos = gl.getAttribLocation(prog, "aPos");
+    gl.enableVertexAttribArray(aPos);
+    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0, 0, 0, 0);
+    const U = n => gl.getUniformLocation(prog, n);
+    this.dither = {
+      gl, prog, dpr: Math.min(window.devicePixelRatio || 1, 2),
+      u: { tex: U("uTex"), res: U("uRes"), mouse: U("uMouse"), radius: U("uRadius"), time: U("uTime"), strength: U("uStrength"), cell: U("uCell"), ambient: U("uAmbient") },
+      tex: null, ready: false, mx: 0, my: 0, tx: 0, ty: 0, strength: 0, target: 0, w: 0, h: 0, _init: false
+    };
+    const img = new Image();
+    img.onload = () => {
+      const t = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, t);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+      this.dither.tex = t; this.dither.ready = true;
+    };
+    img.src = "./generation-mqy5l2b0.png";
+  }
+
+  drawDither(now) {
+    const D = this.dither; if (!D) return;
+    const c = this.ditherRef.current; if (!c) return;
+    const dpr = D.dpr;
+    const cw = Math.max(2, Math.round(c.clientWidth * dpr));
+    const ch = Math.max(2, Math.round(c.clientHeight * dpr));
+    if (cw !== D.w || ch !== D.h) { c.width = cw; c.height = ch; D.w = cw; D.h = ch; D.gl.viewport(0, 0, cw, ch); }
+    D.strength += (D.target - D.strength) * 0.15;
+    D.mx += (D.tx - D.mx) * 0.28;
+    D.my += (D.ty - D.my) * 0.28;
+    const gl = D.gl;
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    if (!D.ready) return;
+    gl.useProgram(D.prog);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, D.tex);
+    gl.uniform1i(D.u.tex, 0);
+    gl.uniform2f(D.u.res, D.w, D.h);
+    gl.uniform2f(D.u.mouse, D.mx, D.my);
+    gl.uniform1f(D.u.radius, 0.62 * D.h);
+    gl.uniform1f(D.u.time, now * 0.001);
+    gl.uniform1f(D.u.strength, D.strength);
+    gl.uniform1f(D.u.cell, 8.0);
+    gl.uniform1f(D.u.ambient, 1.25);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
+
+  measure() {
+    const hero = this.heroRef.current, strip = this.stripRef.current, large = this.largeRef.current;
+    const stage = this.stageRef.current, scaler = this.scalerRef.current;
+    if (!hero || !strip || !large) return;
+    // scale the whole content block down to fit the available width (zoom out, never up)
+    if (stage && scaler) {
+      const BASE = 1740;
+      const avail = stage.clientWidth;
+      const s = Math.min(1, avail / BASE);
+      this.scale = s;
+      scaler.style.transform = `scale(${s})`;
+    }
+    // measure with the float offset removed so the base stays stable
+    const prev = large.style.transform;
+    large.style.transform = "translateY(0px)";
+    const h = hero.getBoundingClientRect();
+    const s = strip.getBoundingClientRect();
+    const l = large.getBoundingClientRect();
+    large.style.transform = prev;
+    const vw = h.width, vh = h.height;
+    // layout never wraps now (it scales), so always draw the connector
+    const g = {
+      p0x: s.right - h.left + 6,
+      p0y: s.top - h.top + s.height * 0.62,
+      p1x: l.left - h.left - 6,
+      p1y: l.top - h.top + l.height * 0.42,
+    };
+    this.geo = g;
+    const { d } = this.buildPath(g, 0);
+    this.setState({ vw, vh, path: d, p0x: g.p0x, p0y: g.p0y, p1x: g.p1x, p1y: g.p1y });
+  }
+
+  renderVals() {
+    return {
+      heroRef: this.heroRef, stripRef: this.stripRef, largeRef: this.largeRef,
+      stageRef: this.stageRef, scalerRef: this.scalerRef,
+      pathRef: this.pathRef, dotRef: this.dotRef,
+      svgRef: this.svgRef, h1Ref: this.h1Ref, buttonRef: this.buttonRef, largeWrapRef: this.largeWrapRef,
+      vw: this.state.vw, vh: this.state.vh, path: this.state.path,
+      p0x: this.state.p0x, p0y: this.state.p0y, p1x: this.state.p1x, p1y: this.state.p1y,
+      introRef: this.introRef, introARef: this.introARef, introLogoRef: this.introLogoRef, introBRef: this.introBRef,
+      onStart: () => {},
+      onLogoClick: () => window.location.reload(),
+      capRef: this.capRef,
+      ditherRef: this.ditherRef,
+      onLargeEnter: () => { if (this.capRef.current) this.capRef.current.style.opacity = "1"; if (this.dither) this.dither.target = 1; },
+      onLargeLeave: () => { if (this.capRef.current) this.capRef.current.style.opacity = "0"; if (this.dither) { this.dither.target = 0; this.dither._init = false; } },
+      onLargeMove: (e) => {
+        const D = this.dither, c = this.ditherRef.current;
+        if (!D || !c) return;
+        const rect = c.getBoundingClientRect();
+        // normalized (scale/dpr independent), mapped into the GL buffer; y flipped to y-up
+        const u = (e.clientX - rect.left) / rect.width;
+        const v = (e.clientY - rect.top) / rect.height;
+        D.tx = u * D.w;
+        D.ty = (1 - v) * D.h;
+        if (!D._init) { D.mx = D.tx; D.my = D.ty; D._init = true; }
+      },
+      onTileEnter: (e) => { const c = e.currentTarget.querySelector("[data-cap]"); if (c) c.style.opacity = "1"; },
+      onTileLeave: (e) => { const c = e.currentTarget.querySelector("[data-cap]"); if (c) c.style.opacity = "0"; }
+    };
+  }
+}
+</script>
+</body>
+</html>

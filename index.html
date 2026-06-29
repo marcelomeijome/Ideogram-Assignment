@@ -111,16 +111,6 @@
 </div>
 
 <script>
-  /* Load Framer Motion once DOM is interactive */
-  (function () {
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/framer-motion@11.18.2/dist/framer-motion.js?cors=3';
-    s.crossOrigin = 'anonymous';
-    document.head.appendChild(s);
-  })();
-</script>
-
-<script>
 (function () {
   /* ---- element refs ---- */
   var hero      = document.getElementById('hero');
@@ -426,7 +416,7 @@
     });
   }
 
-  function playReveal(FM) {
+  function playReveal() {
     if (revealed) return;
     revealed = true;
     measure();
@@ -466,59 +456,50 @@
     setTimeout(showAllStatic, enterEnd - 50 + 980 + 2600);
   }
 
-  /* ---- intro animation (Framer Motion) ---- */
-  function playIntro(FM) {
+  /* ---- intro animation (WAAPI — no external deps) ---- */
+  function waapi(el, from, to, duration, delay, easing) {
+    if (!el) return null;
+    return el.animate([from, to], {
+      duration: duration, delay: delay, easing: easing, fill: 'both'
+    });
+  }
+
+  function playIntro() {
     if (introStarted) return;
     introStarted = true;
-    var animate = FM.animate;
-    var easeIn  = [0.22, 1, 0.36, 1];
+    var easeIn  = 'cubic-bezier(0.22,1,0.36,1)';
+    var easeOut = 'cubic-bezier(0.4,0,0.2,1)';
 
-    var items = [[introA, 0.05], [introLogo, 0.18], [introB, 0.31]];
-    items.forEach(function (pair) {
-      var el = pair[0], delay = pair[1];
-      if (el) animate(el, { opacity: [0, 1], y: [36, 0] }, { duration: 0.85, delay: delay, ease: easeIn });
+    /* enter: staggered fade + rise */
+    var enterItems = [[introA, 50], [introLogo, 180], [introB, 310]];
+    enterItems.forEach(function (pair) {
+      waapi(pair[0],
+        { opacity: 0, transform: 'translateY(36px)' },
+        { opacity: 1, transform: 'translateY(0px)' },
+        850, pair[1], easeIn);
     });
 
     var HOLD = 1000, SETTLE = 1160;
     setTimeout(function () {
-      var easeOut   = [0.4, 0, 0.2, 1];
       var exitItems = [introA, introLogo, introB];
-      var step      = 0.06;
+      var step = 60; /* ms between each */
       exitItems.forEach(function (el, i) {
-        if (!el) return;
         var d = i * step;
-        animate(el, { opacity: [1, 0] }, { duration: 0.32, delay: d, ease: easeOut });
-        animate(el, { y: [0, -20] },     { duration: 0.6,  delay: d, ease: easeOut });
+        waapi(el, { opacity: 1 }, { opacity: 0 }, 320, d, easeOut);
+        waapi(el, { transform: 'translateY(0px)' }, { transform: 'translateY(-20px)' }, 600, d, easeOut);
       });
-      var bgDelay = exitItems.length * step + 0.32;
-      var exit = animate(intro, { opacity: [1, 0] }, { duration: 1.1, delay: bgDelay, ease: easeOut });
 
-      /* start tiles as gradient begins to fade */
-      setTimeout(function () { playReveal(FM); }, Math.round(bgDelay * 1000));
+      /* gradient fades out last */
+      var bgDelay = exitItems.length * step + 320;
+      var exit = waapi(intro, { opacity: 1 }, { opacity: 0 }, 1100, bgDelay, easeOut);
 
-      var done = function () { if (intro) intro.style.display = 'none'; playReveal(FM); };
-      if (exit && exit.finished && exit.finished.then) exit.finished.then(done).catch(done);
-      else if (exit && exit.then) exit.then(done).catch(done);
-      else setTimeout(done, 1200);
+      /* tiles begin entering as gradient starts to fade */
+      setTimeout(playReveal, bgDelay);
+
+      var done = function () { if (intro) intro.style.display = 'none'; playReveal(); };
+      if (exit && exit.finished) exit.finished.then(done).catch(done);
+      setTimeout(done, bgDelay + 1300); /* safety */
     }, SETTLE + HOLD);
-  }
-
-  /* fallback if Framer Motion fails to load */
-  function revealNow() {
-    [introA, introLogo, introB].forEach(function (el) {
-      if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
-    });
-    setTimeout(function () {
-      [introA, introLogo, introB].forEach(function (el, i) {
-        if (!el) return;
-        el.style.transition = 'opacity .32s ease ' + (i * 60) + 'ms, transform .6s ease ' + (i * 60) + 'ms';
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(-20px)';
-      });
-      intro.style.transition = 'opacity 1.1s ease .5s';
-      intro.style.opacity = '0';
-      setTimeout(function () { intro.style.display = 'none'; showAllStatic(); }, 1700);
-    }, 1700);
   }
 
   /* ---- boot ---- */
@@ -528,15 +509,7 @@
   setTimeout(measure, 500);
   raf = requestAnimationFrame(animateLoop);
   initDither();
-
-  var t0 = Date.now();
-  function checkFM() {
-    var FM = window.Motion || window.FramerMotion;
-    if (FM && typeof FM.animate === 'function') { playIntro(FM); }
-    else if (Date.now() - t0 > 2500) { revealNow(); }
-    else setTimeout(checkFM, 30);
-  }
-  checkFM();
+  playIntro();
 })();
 </script>
 </body>
